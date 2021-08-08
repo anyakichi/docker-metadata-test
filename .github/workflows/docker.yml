@@ -12,7 +12,7 @@ jobs:
         id: meta
         with:
           images: |
-            ghcr.io/anyakichi/npm-builder
+            ghcr.io/anyakichi/metadata-test
           flavor: |
             latest=auto
             prefix={{ matrix.tag }}

@@ -12,7 +12,6 @@ jobs:
         id: meta
         with:
           images: |
-            anyakichi/npm-builder
             ghcr.io/anyakichi/npm-builder
           flavor: |
             latest=auto

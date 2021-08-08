@@ -13,10 +13,15 @@ jobs:
         with:
           images: |
             ghcr.io/anyakichi/metadata-test
+          tags: |
+            type=schedule,pattern=nightly,suffix=-${{ matrix.tag }},priority=1000
+            type=ref,event=branch,suffix=-${{ matrix.tag }},priority=600
+            type=ref,event=pr,prefix=pr-,suffix=-${{ matrix.tag }},priority=600
+            type=semver,pattern={{version}},suffix=-${{ matrix.tag }}
+            type=semver,pattern={{major}}.{{minor}},suffix=-${{ matrix.tag }}
+            type=raw,value=${{ matrix.tag }},enable=${{ github.ref == 'refs/heads/main' }}
           flavor: |
-            latest=auto
-            prefix=
-            suffix=-${{ matrix.tag }},onlatest=true
+            latest=false
       - if: ${{ github.event_name != 'pull_request' }}
         uses: docker/login-action@v1
         with:

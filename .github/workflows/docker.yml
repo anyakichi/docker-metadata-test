@@ -14,9 +14,9 @@ jobs:
           images: |
             ghcr.io/anyakichi/metadata-test
           flavor: |
-            latest=true
+            latest=auto
             prefix=
-            suffix=-${{ matrix.tag }}
+            suffix=-${{ matrix.tag }},onlatest=true
       - if: ${{ github.event_name != 'pull_request' }}
         uses: docker/login-action@v1
         with:

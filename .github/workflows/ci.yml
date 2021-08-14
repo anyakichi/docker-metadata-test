@@ -3,7 +3,11 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: ghcr.io/anyakichi/poetry-builder:3.9
+    container:
+      image: ghcr.io/anyakichi/poetry-builder:3.9
+      volumes:
+        - /build
+      options: -w /build
     steps:
       - uses: actions/checkout@v2
       - run: pwd

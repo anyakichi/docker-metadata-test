@@ -3,13 +3,12 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_WORKSPACE: /build
     container:
       image: ghcr.io/anyakichi/poetry-builder:3.9
       volumes:
-        - /build
-      options: -w /build
+        - ${{ $GITHUB_WORKSPACE }}:/build
     steps:
       - uses: actions/checkout@v2
       - run: pwd
+      - run: ls
+      - run: ls /build

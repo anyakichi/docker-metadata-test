@@ -6,7 +6,7 @@ jobs:
     container:
       image: ghcr.io/anyakichi/poetry-builder:3.9
       volumes:
-        - ${{ $GITHUB_WORKSPACE }}:/build
+        - /home/runner/work:/build
       options: -w /build
     steps:
       - uses: actions/checkout@v2

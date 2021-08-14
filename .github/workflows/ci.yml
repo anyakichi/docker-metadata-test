@@ -1,0 +1,9 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: ghcr.io/anyakichi/poetry-builder:3.9
+    steps:
+      - uses: actions/checkout@v2
+      - run: pwd
